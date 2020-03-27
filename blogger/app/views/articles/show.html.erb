@@ -2,6 +2,18 @@
 
 <p><%= @article.body %></p>
 
+<h3>
+  <%= if @article.comments.size != 1
+        "#{@article.comments.size} Comments"
+      else
+        "#{@article.comments.size} Comment"
+      end
+  %>
+</h3>
+<%= render partial: 'articles/comment', collection: @article.comments %>
+
+<%= render partial: 'comments/form' %>
+
 <%= link_to "edit", edit_article_path(@article) %>
 <br>
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Delete the article?"} %>
