@@ -1,6 +1,16 @@
 <h1><%= @article.title %></h1>
+<p>
+  Tags:
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
+
+<br>
 
 <p><%= @article.body %></p>
+
+<br>
 
 <h3>
   <%= if @article.comments.size != 1
@@ -14,8 +24,8 @@
 
 <%= render partial: 'comments/form' %>
 
-<%= link_to "edit", edit_article_path(@article) %>
+<%= link_to "Edit", edit_article_path(@article) %>
 <br>
-<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Delete the article?"} %>
+<%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Delete the article?"} %>
 <br>
 <%= link_to "<< Back to Articles List", articles_path %>
