@@ -8,6 +8,13 @@
 
 <br>
 
+<% if @article.image.exists? %>
+  <p>
+    <%= image_tag @article.image.url(:medium) %><br/>
+  </p>
+  <br>
+<% end %>
+
 <p><%= @article.body %></p>
 
 <br>
